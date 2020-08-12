@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA65194124E37848009DBDB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65194024E37848009DBDB4 /* AppDelegate.swift */; };
+		AA65194324E37848009DBDB4 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA65194224E37848009DBDB4 /* GameScene.sks */; };
+		AA65194524E37848009DBDB4 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA65194424E37848009DBDB4 /* Actions.sks */; };
+		AA65194724E37848009DBDB4 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65194624E37848009DBDB4 /* GameScene.swift */; };
+		AA65194924E37848009DBDB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65194824E37848009DBDB4 /* ViewController.swift */; };
+		AA65194B24E37849009DBDB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA65194A24E37849009DBDB4 /* Assets.xcassets */; };
+		AA65194E24E37849009DBDB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA65194C24E37849009DBDB4 /* Main.storyboard */; };
+		AA65195A24E37849009DBDB4 /* SpritePlaygroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65195924E37849009DBDB4 /* SpritePlaygroundTests.swift */; };
+		AA65196524E37849009DBDB4 /* SpritePlaygroundUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65196424E37849009DBDB4 /* SpritePlaygroundUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA65195624E37849009DBDB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA65193524E37848009DBDB4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA65193C24E37848009DBDB4;
+			remoteInfo = SpritePlayground;
+		};
+		AA65196124E37849009DBDB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA65193524E37848009DBDB4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA65193C24E37848009DBDB4;
+			remoteInfo = SpritePlayground;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AA65193D24E37848009DBDB4 /* SpritePlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpritePlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA65194024E37848009DBDB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AA65194224E37848009DBDB4 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		AA65194424E37848009DBDB4 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		AA65194624E37848009DBDB4 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		AA65194824E37848009DBDB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AA65194A24E37849009DBDB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA65194D24E37849009DBDB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AA65194F24E37849009DBDB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA65195024E37849009DBDB4 /* SpritePlayground.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpritePlayground.entitlements; sourceTree = "<group>"; };
+		AA65195524E37849009DBDB4 /* SpritePlaygroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpritePlaygroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA65195924E37849009DBDB4 /* SpritePlaygroundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpritePlaygroundTests.swift; sourceTree = "<group>"; };
+		AA65195B24E37849009DBDB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA65196024E37849009DBDB4 /* SpritePlaygroundUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpritePlaygroundUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA65196424E37849009DBDB4 /* SpritePlaygroundUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpritePlaygroundUITests.swift; sourceTree = "<group>"; };
+		AA65196624E37849009DBDB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA65193A24E37848009DBDB4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA65195224E37849009DBDB4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA65195D24E37849009DBDB4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA65193424E37848009DBDB4 = {
+			isa = PBXGroup;
+			children = (
+				AA65193F24E37848009DBDB4 /* SpritePlayground */,
+				AA65195824E37849009DBDB4 /* SpritePlaygroundTests */,
+				AA65196324E37849009DBDB4 /* SpritePlaygroundUITests */,
+				AA65193E24E37848009DBDB4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA65193E24E37848009DBDB4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA65193D24E37848009DBDB4 /* SpritePlayground.app */,
+				AA65195524E37849009DBDB4 /* SpritePlaygroundTests.xctest */,
+				AA65196024E37849009DBDB4 /* SpritePlaygroundUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA65193F24E37848009DBDB4 /* SpritePlayground */ = {
+			isa = PBXGroup;
+			children = (
+				AA65194024E37848009DBDB4 /* AppDelegate.swift */,
+				AA65194224E37848009DBDB4 /* GameScene.sks */,
+				AA65194424E37848009DBDB4 /* Actions.sks */,
+				AA65194624E37848009DBDB4 /* GameScene.swift */,
+				AA65194824E37848009DBDB4 /* ViewController.swift */,
+				AA65194A24E37849009DBDB4 /* Assets.xcassets */,
+				AA65194C24E37849009DBDB4 /* Main.storyboard */,
+				AA65194F24E37849009DBDB4 /* Info.plist */,
+				AA65195024E37849009DBDB4 /* SpritePlayground.entitlements */,
+			);
+			path = SpritePlayground;
+			sourceTree = "<group>";
+		};
+		AA65195824E37849009DBDB4 /* SpritePlaygroundTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA65195924E37849009DBDB4 /* SpritePlaygroundTests.swift */,
+				AA65195B24E37849009DBDB4 /* Info.plist */,
+			);
+			path = SpritePlaygroundTests;
+			sourceTree = "<group>";
+		};
+		AA65196324E37849009DBDB4 /* SpritePlaygroundUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AA65196424E37849009DBDB4 /* SpritePlaygroundUITests.swift */,
+				AA65196624E37849009DBDB4 /* Info.plist */,
+			);
+			path = SpritePlaygroundUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA65193C24E37848009DBDB4 /* SpritePlayground */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA65196924E37849009DBDB4 /* Build configuration list for PBXNativeTarget "SpritePlayground" */;
+			buildPhases = (
+				AA65193924E37848009DBDB4 /* Sources */,
+				AA65193A24E37848009DBDB4 /* Frameworks */,
+				AA65193B24E37848009DBDB4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpritePlayground;
+			productName = SpritePlayground;
+			productReference = AA65193D24E37848009DBDB4 /* SpritePlayground.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA65195424E37849009DBDB4 /* SpritePlaygroundTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA65196C24E37849009DBDB4 /* Build configuration list for PBXNativeTarget "SpritePlaygroundTests" */;
+			buildPhases = (
+				AA65195124E37849009DBDB4 /* Sources */,
+				AA65195224E37849009DBDB4 /* Frameworks */,
+				AA65195324E37849009DBDB4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA65195724E37849009DBDB4 /* PBXTargetDependency */,
+			);
+			name = SpritePlaygroundTests;
+			productName = SpritePlaygroundTests;
+			productReference = AA65195524E37849009DBDB4 /* SpritePlaygroundTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AA65195F24E37849009DBDB4 /* SpritePlaygroundUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA65196F24E37849009DBDB4 /* Build configuration list for PBXNativeTarget "SpritePlaygroundUITests" */;
+			buildPhases = (
+				AA65195C24E37849009DBDB4 /* Sources */,
+				AA65195D24E37849009DBDB4 /* Frameworks */,
+				AA65195E24E37849009DBDB4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA65196224E37849009DBDB4 /* PBXTargetDependency */,
+			);
+			name = SpritePlaygroundUITests;
+			productName = SpritePlaygroundUITests;
+			productReference = AA65196024E37849009DBDB4 /* SpritePlaygroundUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA65193524E37848009DBDB4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Dmitry Veber";
+				TargetAttributes = {
+					AA65193C24E37848009DBDB4 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					AA65195424E37849009DBDB4 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = AA65193C24E37848009DBDB4;
+					};
+					AA65195F24E37849009DBDB4 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = AA65193C24E37848009DBDB4;
+					};
+				};
+			};
+			buildConfigurationList = AA65193824E37848009DBDB4 /* Build configuration list for PBXProject "SpritePlayground" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA65193424E37848009DBDB4;
+			productRefGroup = AA65193E24E37848009DBDB4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA65193C24E37848009DBDB4 /* SpritePlayground */,
+				AA65195424E37849009DBDB4 /* SpritePlaygroundTests */,
+				AA65195F24E37849009DBDB4 /* SpritePlaygroundUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA65193B24E37848009DBDB4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA65194324E37848009DBDB4 /* GameScene.sks in Resources */,
+				AA65194B24E37849009DBDB4 /* Assets.xcassets in Resources */,
+				AA65194524E37848009DBDB4 /* Actions.sks in Resources */,
+				AA65194E24E37849009DBDB4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA65195324E37849009DBDB4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA65195E24E37849009DBDB4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA65193924E37848009DBDB4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA65194924E37848009DBDB4 /* ViewController.swift in Sources */,
+				AA65194724E37848009DBDB4 /* GameScene.swift in Sources */,
+				AA65194124E37848009DBDB4 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA65195124E37849009DBDB4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA65195A24E37849009DBDB4 /* SpritePlaygroundTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA65195C24E37849009DBDB4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA65196524E37849009DBDB4 /* SpritePlaygroundUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA65195724E37849009DBDB4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA65193C24E37848009DBDB4 /* SpritePlayground */;
+			targetProxy = AA65195624E37849009DBDB4 /* PBXContainerItemProxy */;
+		};
+		AA65196224E37849009DBDB4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA65193C24E37848009DBDB4 /* SpritePlayground */;
+			targetProxy = AA65196124E37849009DBDB4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AA65194C24E37849009DBDB4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA65194D24E37849009DBDB4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AA65196724E37849009DBDB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA65196824E37849009DBDB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		AA65196A24E37849009DBDB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SpritePlayground/SpritePlayground.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = YPRT3S2S7G;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = SpritePlayground/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = veber.SpritePlayground;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA65196B24E37849009DBDB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SpritePlayground/SpritePlayground.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = YPRT3S2S7G;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = SpritePlayground/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = veber.SpritePlayground;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AA65196D24E37849009DBDB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = YPRT3S2S7G;
+				INFOPLIST_FILE = SpritePlaygroundTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = veber.SpritePlaygroundTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpritePlayground.app/Contents/MacOS/SpritePlayground";
+			};
+			name = Debug;
+		};
+		AA65196E24E37849009DBDB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = YPRT3S2S7G;
+				INFOPLIST_FILE = SpritePlaygroundTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = veber.SpritePlaygroundTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpritePlayground.app/Contents/MacOS/SpritePlayground";
+			};
+			name = Release;
+		};
+		AA65197024E37849009DBDB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = YPRT3S2S7G;
+				INFOPLIST_FILE = SpritePlaygroundUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = veber.SpritePlaygroundUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = SpritePlayground;
+			};
+			name = Debug;
+		};
+		AA65197124E37849009DBDB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = YPRT3S2S7G;
+				INFOPLIST_FILE = SpritePlaygroundUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = veber.SpritePlaygroundUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = SpritePlayground;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA65193824E37848009DBDB4 /* Build configuration list for PBXProject "SpritePlayground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA65196724E37849009DBDB4 /* Debug */,
+				AA65196824E37849009DBDB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA65196924E37849009DBDB4 /* Build configuration list for PBXNativeTarget "SpritePlayground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA65196A24E37849009DBDB4 /* Debug */,
+				AA65196B24E37849009DBDB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA65196C24E37849009DBDB4 /* Build configuration list for PBXNativeTarget "SpritePlaygroundTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA65196D24E37849009DBDB4 /* Debug */,
+				AA65196E24E37849009DBDB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA65196F24E37849009DBDB4 /* Build configuration list for PBXNativeTarget "SpritePlaygroundUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA65197024E37849009DBDB4 /* Debug */,
+				AA65197124E37849009DBDB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA65193524E37848009DBDB4 /* Project object */;
+}
