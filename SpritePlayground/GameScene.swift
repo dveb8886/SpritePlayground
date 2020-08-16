@@ -8,85 +8,118 @@
 
 import SpriteKit
 import GameplayKit
+import Carbon.HIToolbox.Events  // kVK
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    static var instance: GameScene? = nil
+    
+    var player = Player()
+//    var enemy = Enemy()
+    var world = World()
+    var keys = [Int: Bool]()
+    var bullets = [Bullet]()
+    
+    enum ColliderType: UInt32 {
+        case UNIT = 1
+        case TERRAIN = 2
+        case PROJECTILE = 4
+    }
     
     override func didMove(to view: SKView) {
+        GameScene.instance = self
+        self.physicsWorld.contactDelegate = self
         
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
+        let O = "e"
+        let X = "b"
         
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
+        // Load Map
+        let map = [
+            [X, X, X, X, X, X, X, X, X, X, X, X, X, X],
+            [X, O, X, O, O, O, O, X, O, O, O, O, X, X],
+            [X, O, X, O, X, X, X, X, X, X, X, O, X, X],
+            [X, O, X, O, O, O, O, X, O, O, O, O, X, X],
+            [X, O, X, X, X, X, O, X, O, X, X, O, X, X],
+            [X, O, O, O, O, O, O, X, O, O, X, O, X, X],
+            [X, X, X, X, X, O, X, X, X, O, X, O, X, X],
+            [X, O, O, O, X, O, X, O, X, O, X, O, X, X],
+            [X, O, X, O, X, O, X, O, X, O, X, O, X, X],
+            [X, O, X, O, X, O, X, O, X, O, X, O, X, X],
+            [X, O, X, O, O, O, O, O, O, O, X, O, X, X],
+            [X, X, X, X, X, X, X, X, X, X, X, X, X, X]
+        ]
         
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
-    }
-    
-    
-    func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
+        world.load(map: map)
+        
+        addChild(world)
+        world.position = CGPoint(x: 100, y: 100)
+        
+        // Load Player
+        player.teleport(x: 1, y: 1)
+        world.addChild(player)
+        world.addChild(player.dest_marker!)
+        
+//        enemy.teleport(x: 5, y: 5)
+//        world.addChild(enemy)
     }
     
     override func mouseDown(with event: NSEvent) {
-        self.touchDown(atPoint: event.location(in: self))
+        // Get mouse position in scene coordinates
+        let location = event.location(in: self)
+        // Get node at mouse position
+        let node = self.atPoint(location)
+        print((node.name ?? "empty") + ": " + node.position.debugDescription)
     }
     
     override func mouseDragged(with event: NSEvent) {
-        self.touchMoved(toPoint: event.location(in: self))
+        
     }
     
     override func mouseUp(with event: NSEvent) {
-        self.touchUp(atPoint: event.location(in: self))
+        
     }
     
     override func keyDown(with event: NSEvent) {
-        switch event.keyCode {
-        case 0x31:
-            if let label = self.label {
-                label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-            }
-        default:
-            print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
-        }
+        keys[Int(event.keyCode)] = true
+    }
+    
+    override func keyUp(with event: NSEvent) {
+        keys[Int(event.keyCode)] = false
     }
     
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        player.update(keys: keys, currentTime: currentTime)
+        world.update(keys: keys)
+//        enemy.update(keys: keys, currentTime: currentTime)
+        for bullet in self.bullets {
+            bullet.update(keys: keys)
+        }
     }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let nodeA = contact.bodyA.node as? SKSpriteNode
+        let nodeB = contact.bodyB.node as? SKSpriteNode
+        let nameA = nodeA?.name ?? "empty"
+        let nameB = nodeB?.name ?? "empty"
+//        print(nameA + " > " + nameB)
+//        print((nodeA?.position.debugDescription ?? "empty") + " > " + (nodeB?.position.debugDescription ?? "empty"))
+//        print("contact: " + contact.contactPoint.debugDescription)
+        if nodeA?.name == "player" || nodeB?.name == "player" {
+            player.didBegin(contact: contact)
+        }
+//        if nodeA?.name == "enemy" || nodeB?.name == "enemy"{
+//            enemy.didBegin(contact: contact)
+//        }
+        if nodeA?.name == "bullet" {
+            let bullet = nodeA as! Bullet
+            bullet.didBegin(contact: contact)
+        }
+        if nodeB?.name == "bullet" {
+            let bullet = nodeB as! Bullet
+            bullet.didBegin(contact: contact)
+        }
+    }
+    
+    
 }
