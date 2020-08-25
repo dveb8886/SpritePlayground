@@ -30,6 +30,8 @@ class World : SKNode {
     }
     
     func load(map: [[String]]){
+        
+        
         var tile = Tile()
         tile_templates["e"] = tile
         tile = Tile(imageNamed: "Blocker")
@@ -39,17 +41,30 @@ class World : SKNode {
 //        tile.initPhysics()
         tile_templates["a"] = tile
         
+        let size = World.squareSize
+        
         self.coords = Array(repeating: Array(repeating: Tile(), count: map.count), count: map[0].count)
         for y in 0...map.count-1 {
             for x in 0...map[y].count-1 {
-                self.coords[x][y] = tile_templates[map[y][x]]!.clone()
-                self.coords[x][y].position = CGPoint(x: x*World.squareSize, y: y*World.squareSize) 
+                let tile_tmp = tile_templates[map[y][x]]!.clone()
+                
+//                if tile_tmp.imageName == "Blocker" {
+//                    tile_tmp.initPhysics()
+//                }
+                tile_tmp.position = CGPoint(x: x*size, y: y*size)
+                self.coords[x][y] = tile_tmp
                 self.addChild(self.coords[x][y])
+                
             }
         }
     }
     
     func update(keys: [Int: Bool]){
+        for row in self.coords {
+            for tile in row {
+                tile.update(keys: keys)
+            }
+        }
         if keys[kVK_LeftArrow] ?? false {
             self.position.x -= 10
         } else if keys[kVK_RightArrow] ?? false {

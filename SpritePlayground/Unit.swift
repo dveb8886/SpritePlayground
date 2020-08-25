@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 import Carbon.HIToolbox.Events  // kVK
 
-class Unit  : SKSpriteNode {
+class Unit  : Entity {
     
     let DIR_UP = 0
     let DIR_DOWN = 1
@@ -24,11 +24,16 @@ class Unit  : SKSpriteNode {
     var moving_dir = 0
     var facing_dir = 0
     
+    var life_max = 5.0
+    var life_amt = 5.0
+    var invulnerable = false
+    
     var dest_marker: SKSpriteNode?
     
-    init(imageNamed: String, name: String){
+    init(imageNamed: String, name: String, marker: Bool = false){
         let texture = SKTexture(imageNamed: imageNamed)
-        super.init(texture: texture, color: SKColor.clear, size: texture.size())
+        super.init(texture: texture, color: SKColor.white, size: texture.size())
+        self.colorBlendFactor = 1.0
         
         self.name = name
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
@@ -38,13 +43,14 @@ class Unit  : SKSpriteNode {
             GameScene.ColliderType.UNIT.rawValue +
             GameScene.ColliderType.TERRAIN.rawValue
         self.physicsBody!.collisionBitMask =
-            GameScene.ColliderType.UNIT.rawValue +
             GameScene.ColliderType.TERRAIN.rawValue
         
-        dest_marker = SKSpriteNode(texture: texture, color: SKColor.red, size: texture.size())
-        dest_marker?.colorBlendFactor = 1.0
-        dest_marker?.alpha = 0.5
-        dest_marker?.position = tgt_coord_pos
+        if marker {
+            dest_marker = SKSpriteNode(texture: texture, color: SKColor.red, size: texture.size())
+            dest_marker?.colorBlendFactor = 1.0
+            dest_marker?.alpha = 0.5
+            dest_marker?.position = tgt_coord_pos
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -117,6 +123,41 @@ class Unit  : SKSpriteNode {
         Bullet(dir: self.moving_dir, x: x, y: y)
     }
     
+    
+    
+    func damage(amt: Double){
+        if !invulnerable {
+            self.life_amt -= amt
+            let scale = CGFloat(self.life_amt / self.life_max)
+            self.color = SKColor.red
+            
+            let makeMortal:SKAction = SKAction.run {
+                self.invulnerable = false
+            }
+            
+            self.invulnerable = true
+            self.run(SKAction.scale(to: scale, duration: 0.5))
+            var seq = SKAction.sequence([
+                SKAction.colorize(with: SKColor.white, colorBlendFactor: 1.0, duration: 0.5),
+                makeMortal
+            ])
+            
+            self.run(seq)
+            
+            SKAction.run {
+                
+            }
+            if self.life_amt <= 0 {
+                self.die()
+            }
+        }
+    }
+    
+    func die(){
+        self.removeFromParent()
+//        GameScene.instance?.bullets.remove(at: (GameScene.instance?.bullets.firstIndex(of: self))!)
+    }
+    
     func updateMovement(){
         if moving {
             if moving_dir == DIR_UP {
@@ -155,19 +196,27 @@ class Unit  : SKSpriteNode {
         updateMovement()
     }
     
-    func didBegin(contact: SKPhysicsContact) {
+    override func didBegin(contact: SKPhysicsContact, target: Entity) {
+        
+        // if the player is touched, damage the player
+        if target.name == "player" {
+            (target as! Unit).damage(amt: 1)
+        }
+        
         // cancel move by reversing it without turning around
-        if self.facing_dir == self.moving_dir {
-            if moving_dir == DIR_UP {
-                move(dir: DIR_DOWN, rotate: false)
-            } else if moving_dir == DIR_DOWN {
-                move(dir: DIR_UP, rotate: false)
-            } else if moving_dir == DIR_LEFT {
-                move(dir: DIR_RIGHT, rotate: false)
-            } else if moving_dir == DIR_RIGHT {
-                move(dir: DIR_LEFT, rotate: false)
-            } else {
-                fatalError("bad moving_dir value: "+String(moving_dir))
+        if target.name == "tile"{
+            if self.facing_dir == self.moving_dir {
+                if moving_dir == DIR_UP {
+                    move(dir: DIR_DOWN, rotate: false)
+                } else if moving_dir == DIR_DOWN {
+                    move(dir: DIR_UP, rotate: false)
+                } else if moving_dir == DIR_LEFT {
+                    move(dir: DIR_RIGHT, rotate: false)
+                } else if moving_dir == DIR_RIGHT {
+                    move(dir: DIR_LEFT, rotate: false)
+                } else {
+                    fatalError("bad moving_dir value: "+String(moving_dir))
+                }
             }
         }
     }

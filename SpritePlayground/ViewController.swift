@@ -18,6 +18,7 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         let scene = GameScene(size: view.frame.size)
+//        let scene = IssuePhysics(size: view.frame.size)
         let skView = view as! SKView
         skView.presentScene(scene)
     }

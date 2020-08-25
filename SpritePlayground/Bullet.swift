@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 import Carbon.HIToolbox.Events  // kVK
 
-class Bullet : SKSpriteNode {
+class Bullet : Entity {
     let DIR_UP = 0
     let DIR_DOWN = 1
     let DIR_LEFT = 2
@@ -80,9 +80,13 @@ class Bullet : SKSpriteNode {
         }
     }
     
-    func didBegin(contact: SKPhysicsContact) {
+    override func didBegin(contact: SKPhysicsContact, target: Entity){
         self.removeFromParent()
         GameScene.instance?.bullets.remove(at: (GameScene.instance?.bullets.firstIndex(of: self))!)
         print("bullet contact")
+        if target is Unit {
+            print("target contact")
+            (target as! Unit).damage(amt: 1.0) 
+        }
     }
 }

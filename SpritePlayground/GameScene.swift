@@ -15,7 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     static var instance: GameScene? = nil
     
     var player = Player()
-//    var enemy = Enemy()
+    var enemy = Enemy()
     var world = World()
     var keys = [Int: Bool]()
     var bullets = [Bullet]()
@@ -51,16 +51,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         world.load(map: map)
         
+        
         addChild(world)
-        world.position = CGPoint(x: 100, y: 100)
+        world.position = CGPoint(x: 50, y: 50)
         
         // Load Player
-        player.teleport(x: 1, y: 1)
+        player.teleport(x: 11, y: 10)
         world.addChild(player)
-        world.addChild(player.dest_marker!)
+//        world.addChild(player.dest_marker!)
         
-//        enemy.teleport(x: 5, y: 5)
-//        world.addChild(enemy)
+        enemy.teleport(x: 5, y: 5)
+        world.addChild(enemy)
     }
     
     override func mouseDown(with event: NSEvent) {
@@ -69,6 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Get node at mouse position
         let node = self.atPoint(location)
         print((node.name ?? "empty") + ": " + node.position.debugDescription)
+        
     }
     
     override func mouseDragged(with event: NSEvent) {
@@ -91,33 +93,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         player.update(keys: keys, currentTime: currentTime)
         world.update(keys: keys)
-//        enemy.update(keys: keys, currentTime: currentTime)
+        enemy.update(keys: keys, currentTime: currentTime)
         for bullet in self.bullets {
             bullet.update(keys: keys)
         }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        let nodeA = contact.bodyA.node as? SKSpriteNode
-        let nodeB = contact.bodyB.node as? SKSpriteNode
+        let nodeA = contact.bodyA.node as? Entity
+        let nodeB = contact.bodyB.node as? Entity
         let nameA = nodeA?.name ?? "empty"
         let nameB = nodeB?.name ?? "empty"
-//        print(nameA + " > " + nameB)
-//        print((nodeA?.position.debugDescription ?? "empty") + " > " + (nodeB?.position.debugDescription ?? "empty"))
-//        print("contact: " + contact.contactPoint.debugDescription)
-        if nodeA?.name == "player" || nodeB?.name == "player" {
-            player.didBegin(contact: contact)
+        print(nameA + " > " + nameB)
+        
+        // init nodeA as source and nodeB as target
+        var source = nodeA
+        var target = nodeB
+        
+        // tile alwals target, bullet and enemy always source
+        if nodeA?.name == "tile" || nodeB?.name == "bullet" || nodeB?.name == "enemy" {   // tile is always the target, bullet always source
+            target = nodeA
+            source = nodeB
         }
-//        if nodeA?.name == "enemy" || nodeB?.name == "enemy"{
-//            enemy.didBegin(contact: contact)
-//        }
-        if nodeA?.name == "bullet" {
-            let bullet = nodeA as! Bullet
-            bullet.didBegin(contact: contact)
-        }
-        if nodeB?.name == "bullet" {
-            let bullet = nodeB as! Bullet
-            bullet.didBegin(contact: contact)
+        
+        if source != nil && target != nil {
+            source!.didBegin(contact: contact, target: target!)
         }
     }
     
