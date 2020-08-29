@@ -10,19 +10,38 @@ import Foundation
 import SpriteKit
 import Carbon.HIToolbox.Events  // kVK
 
-class Unit  : Entity {
+struct KeyCombo: Hashable {
+    var keys: [Int]
+    
+    init(keys: [Int]){
+        self.keys = keys
+        self.keys.sort()
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(keys)
+    }
+
+    static func == (lhs: KeyCombo, rhs: KeyCombo) -> Bool {
+        return lhs.keys == rhs.keys
+    }
+}
+
+class Unit  : Entity, Status {
+    
+    var statuses: [Effect]
+    var abilities: [KeyCombo: Spell]
     
     let DIR_UP = 0
     let DIR_DOWN = 1
     let DIR_LEFT = 2
     let DIR_RIGHT = 3
     
-    var cur_tile_pos = CGPoint(x: 0, y: 0)
-    var tgt_coord_pos = CGPoint(x: 0, y: 0)
+    
     var moving = false
     var shoot_delay = 0.0
-    var moving_dir = 0
-    var facing_dir = 0
+    var moving_dir: Facing = .UP
+    var facing_dir: Facing = .UP
     
     var life_max = 5.0
     var life_amt = 5.0
@@ -32,6 +51,8 @@ class Unit  : Entity {
     
     init(imageNamed: String, name: String, marker: Bool = false){
         let texture = SKTexture(imageNamed: imageNamed)
+        self.statuses = [Effect]()
+        self.abilities = [KeyCombo: Spell]()
         super.init(texture: texture, color: SKColor.white, size: texture.size())
         self.colorBlendFactor = 1.0
         
@@ -57,89 +78,19 @@ class Unit  : Entity {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func move(dir: Int, rotate: Bool = true){
-        print(String(dir) + " r:"+String(rotate))
-        moving = true
-        moving_dir = dir
-        if dir == DIR_UP {
-            cur_tile_pos.y += 1
-            if rotate {
-                self.zRotation = 0
-                self.facing_dir = DIR_UP
-            }
-        } else if dir == DIR_DOWN {
-            cur_tile_pos.y -= 1
-            if rotate {
-                self.zRotation = .pi
-                self.facing_dir = DIR_DOWN
-            }
-        } else if dir == DIR_LEFT {
-            cur_tile_pos.x -= 1
-            if rotate {
-                self.zRotation = .pi / 2
-                self.facing_dir = DIR_LEFT
-            }
-        } else if dir == DIR_RIGHT {
-            cur_tile_pos.x += 1
-            if rotate {
-                self.zRotation = 3 * .pi / 2
-                self.facing_dir = DIR_RIGHT
-            }
-        }
-        
-        tgt_coord_pos.x = cur_tile_pos.x*CGFloat(World.squareSize)
-        tgt_coord_pos.y = cur_tile_pos.y*CGFloat(World.squareSize)
-        
-        self.dest_marker?.position = tgt_coord_pos
-        self.dest_marker?.zRotation = self.zRotation
-    }
-    
-    func teleport(x: Int, y: Int){
-        cur_tile_pos.x = CGFloat(x)
-        cur_tile_pos.y = CGFloat(y)
-        
-        tgt_coord_pos.x = cur_tile_pos.x*CGFloat(World.squareSize)
-        tgt_coord_pos.y = cur_tile_pos.y*CGFloat(World.squareSize)
-        
-        self.dest_marker?.position = tgt_coord_pos
-        
-        self.position.x = tgt_coord_pos.x
-        self.position.y = tgt_coord_pos.y
-    }
-    
-    func shoot(){
-        var x = self.position.x
-        var y = self.position.y
-        let spawn_offset = CGFloat(18)
-        if moving_dir == DIR_UP {
-            y += spawn_offset
-        } else if moving_dir == DIR_DOWN {
-            y -= spawn_offset
-        } else if moving_dir == DIR_LEFT {
-            x -= spawn_offset
-        } else if moving_dir == DIR_RIGHT {
-            x += spawn_offset
-        }
-        Bullet(dir: self.moving_dir, x: x, y: y)
-    }
-    
-    
-    
     func damage(amt: Double){
         if !invulnerable {
             self.life_amt -= amt
             let scale = CGFloat(self.life_amt / self.life_max)
             self.color = SKColor.red
             
-            let makeMortal:SKAction = SKAction.run {
-                self.invulnerable = false
-            }
-            
             self.invulnerable = true
             self.run(SKAction.scale(to: scale, duration: 0.5))
-            var seq = SKAction.sequence([
+            let seq = SKAction.sequence([
                 SKAction.colorize(with: SKColor.white, colorBlendFactor: 1.0, duration: 0.5),
-                makeMortal
+                SKAction.run {
+                    self.invulnerable = false
+                }
             ])
             
             self.run(seq)
@@ -158,65 +109,26 @@ class Unit  : Entity {
 //        GameScene.instance?.bullets.remove(at: (GameScene.instance?.bullets.firstIndex(of: self))!)
     }
     
-    func updateMovement(){
-        if moving {
-            if moving_dir == DIR_UP {
-                var new_y = self.position.y + speed
-                if new_y > self.tgt_coord_pos.y {
-                    new_y = self.tgt_coord_pos.y
-                    moving = false
-                }
-                self.position.y = new_y
-            } else if moving_dir == DIR_DOWN {
-                var new_y = self.position.y - speed
-                if new_y < self.tgt_coord_pos.y {
-                    new_y = self.tgt_coord_pos.y
-                    moving = false
-                }
-                self.position.y = new_y
-            } else if moving_dir == DIR_LEFT {
-                var new_x = self.position.x - speed
-                if new_x < self.tgt_coord_pos.x {
-                    new_x = self.tgt_coord_pos.x
-                    moving = false
-                }
-                self.position.x = new_x
-            } else if moving_dir == DIR_RIGHT {
-                var new_x = self.position.x + speed
-                if new_x > self.tgt_coord_pos.x {
-                    new_x = self.tgt_coord_pos.x
-                    moving = false
-                }
-                self.position.x = new_x
-            }
-        }
-    }
-    
     func update(keys: [Int: Bool], currentTime: TimeInterval){
-        updateMovement()
+//        updateMovement()
     }
     
     override func didBegin(contact: SKPhysicsContact, target: Entity) {
         
         // if the player is touched, damage the player
         if target.name == "player" {
-            (target as! Unit).damage(amt: 1)
+//            (target as! Unit).damage(amt: 1)
         }
         
-        // cancel move by reversing it without turning around
-        if target.name == "tile"{
-            if self.facing_dir == self.moving_dir {
-                if moving_dir == DIR_UP {
-                    move(dir: DIR_DOWN, rotate: false)
-                } else if moving_dir == DIR_DOWN {
-                    move(dir: DIR_UP, rotate: false)
-                } else if moving_dir == DIR_LEFT {
-                    move(dir: DIR_RIGHT, rotate: false)
-                } else if moving_dir == DIR_RIGHT {
-                    move(dir: DIR_LEFT, rotate: false)
-                } else {
-                    fatalError("bad moving_dir value: "+String(moving_dir))
-                }
+        for effect in effects["collider"]! {
+            if effect is CollidingEffect {
+                let colliding_effect = effect as! CollidingEffect
+                let dict: [EffectAttr: Any] = [
+                    .FACING: self.moving_dir,
+                    .TARGET: self,
+                    .COLLIDE_TARGET: target
+                ]
+                colliding_effect.collide(attr: dict)
             }
         }
     }

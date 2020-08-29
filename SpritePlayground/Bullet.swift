@@ -10,18 +10,22 @@ import Foundation
 import SpriteKit
 import Carbon.HIToolbox.Events  // kVK
 
-class Bullet : Entity {
-    let DIR_UP = 0
-    let DIR_DOWN = 1
-    let DIR_LEFT = 2
-    let DIR_RIGHT = 3
+class Bullet : Entity, Projectile {
+    
+    var moveSpeed: CGFloat
+    
+    var impactEffect: Effect
+    var spawnerEffect: Effect?
     
     var moving = true
-    var moving_dir = 0
+    var moving_dir: Facing = .UP
     
-    init(dir: Int, x: CGFloat, y: CGFloat){
+    init(impactEffect: Effect){
         let texture = SKTexture(imageNamed: "Bullet")
+        self.moveSpeed = 3.0
+        self.impactEffect = impactEffect
         super.init(texture: texture, color: SKColor.clear, size: texture.size())
+        
         
         self.name = "bullet"
         self.speed = 3.0
@@ -36,26 +40,21 @@ class Bullet : Entity {
             GameScene.ColliderType.UNIT.rawValue +
             GameScene.ColliderType.TERRAIN.rawValue +
             GameScene.ColliderType.PROJECTILE.rawValue
-        
-        GameScene.instance?.bullets.append(self)
-        GameScene.instance?.world.addChild(self) 
-        teleport(x: x, y: y)
-        move(dir: dir)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func move(dir: Int, rotate: Bool = true){
+    func move(dir: Facing, rotate: Bool = true){
         moving_dir = dir
-        if dir == DIR_UP {
+        if dir == .UP {
             if rotate {self.zRotation = 0}
-        } else if dir == DIR_DOWN {
+        } else if dir == .DOWN {
             if rotate {self.zRotation = .pi}
-        } else if dir == DIR_LEFT {
+        } else if dir == .LEFT {
             if rotate {self.zRotation = .pi / 2}
-        } else if dir == DIR_RIGHT {
+        } else if dir == .RIGHT {
             if rotate {self.zRotation = 3 * .pi / 2}
         }
         
@@ -68,25 +67,48 @@ class Bullet : Entity {
     
     func update(keys: [Int: Bool]){
         if moving {
-            if moving_dir == DIR_UP {
+            if moving_dir == .UP {
                 self.position.y = self.position.y + speed
-            } else if moving_dir == DIR_DOWN {
+            } else if moving_dir == .DOWN {
                 self.position.y = self.position.y - speed
-            } else if moving_dir == DIR_LEFT {
+            } else if moving_dir == .LEFT {
                 self.position.x = self.position.x - speed
-            } else if moving_dir == DIR_RIGHT {
+            } else if moving_dir == .RIGHT {
                 self.position.x = self.position.x + speed
             }
         }
     }
     
+    func clone() -> Projectile {
+        let bullet = Bullet(impactEffect: self.impactEffect)
+        return bullet
+    }
+    
+    func setPosition(x: CGFloat, y: CGFloat) {
+        self.position = CGPoint(x: x, y: y)
+    }
+    
+    func setFacing(dir: Facing) {
+        self.moving_dir = dir
+    }
+    
+    func getSize() -> CGSize {
+        return self.size
+    }
+    
     override func didBegin(contact: SKPhysicsContact, target: Entity){
-        self.removeFromParent()
-        GameScene.instance?.bullets.remove(at: (GameScene.instance?.bullets.firstIndex(of: self))!)
-        print("bullet contact")
-        if target is Unit {
-            print("target contact")
-            (target as! Unit).damage(amt: 1.0) 
+        if !target.bool_attr["ethereal"]! {
+            self.removeFromParent()
+            GameScene.instance?.bullets.remove(at: (GameScene.instance?.bullets.firstIndex(of: self))!)
+            print("bullet contact")
+//            if target is Unit {
+                print("target contact")
+                let dict: [EffectAttr: Any] = [
+                    .TARGET: target,
+                    .FACING: self.moving_dir
+                ]
+                self.impactEffect.start(attr: dict)
+//            }
         }
     }
 }

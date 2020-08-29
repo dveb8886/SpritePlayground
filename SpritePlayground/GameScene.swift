@@ -34,20 +34,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let X = "b"
         
         // Load Map
-        let map = [
-            [X, X, X, X, X, X, X, X, X, X, X, X, X, X],
-            [X, O, X, O, O, O, O, X, O, O, O, O, X, X],
-            [X, O, X, O, X, X, X, X, X, X, X, O, X, X],
-            [X, O, X, O, O, O, O, X, O, O, O, O, X, X],
-            [X, O, X, X, X, X, O, X, O, X, X, O, X, X],
-            [X, O, O, O, O, O, O, X, O, O, X, O, X, X],
-            [X, X, X, X, X, O, X, X, X, O, X, O, X, X],
-            [X, O, O, O, X, O, X, O, X, O, X, O, X, X],
-            [X, O, X, O, X, O, X, O, X, O, X, O, X, X],
-            [X, O, X, O, X, O, X, O, X, O, X, O, X, X],
-            [X, O, X, O, O, O, O, O, O, O, X, O, X, X],
-            [X, X, X, X, X, X, X, X, X, X, X, X, X, X]
-        ]
+//        let map = [
+//            [X, X, X, X, X, X, X, X, X, X, X, X, X, X],
+//            [X, O, X, O, O, O, O, X, O, O, O, O, X, X],
+//            [X, O, X, O, X, X, X, X, X, X, X, O, X, X],
+//            [X, O, X, O, O, O, O, X, O, O, O, O, X, X],
+//            [X, O, X, X, X, X, O, X, O, X, X, O, X, X],
+//            [X, O, O, O, O, O, O, X, O, O, X, O, X, X],
+//            [X, X, X, X, X, O, X, X, X, O, X, O, X, X],
+//            [X, O, O, O, X, O, X, O, X, O, X, O, X, X],
+//            [X, O, X, O, X, O, X, O, X, O, X, O, X, X],
+//            [X, O, X, O, X, O, X, O, X, O, X, O, X, X],
+//            [X, O, X, O, O, O, O, O, O, O, X, O, X, X],
+//            [X, X, X, X, X, X, X, X, X, X, X, X, X, X]
+//        ]
+        
+        let map = [[X],[X],[X],[X],[X],[X],[X],[X],[X],[X],[X],[X],[O]]
         
         world.load(map: map)
         

@@ -15,6 +15,10 @@ class Enemy  : Unit {
     init(){
         super.init(imageNamed: "Circle", name: "enemy")
         self.speed = 1.0
+        self.abilities[KeyCombo(keys: [kVK_ANSI_I])] = SelfCast(cooldown: 0.1, startEffect: MoveEffect(dir: .UP, speed: 0.5))
+        self.abilities[KeyCombo(keys: [kVK_ANSI_K])] = SelfCast(cooldown: 0.1, startEffect: MoveEffect(dir: .DOWN, speed: 0.5))
+        self.abilities[KeyCombo(keys: [kVK_ANSI_J])] = SelfCast(cooldown: 0.1, startEffect: MoveEffect(dir: .LEFT, speed: 0.5))
+        self.abilities[KeyCombo(keys: [kVK_ANSI_L])] = SelfCast(cooldown: 0.1, startEffect: MoveEffect(dir: .RIGHT, speed: 0.5))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -23,11 +27,47 @@ class Enemy  : Unit {
     
     
     override func update(keys: [Int: Bool], currentTime: TimeInterval){
-        if !moving {
-            move(dir: Int.random(in: 0...3))
+//        for ability in self.abilities {
+////            print("ability - test")
+//            let expected_keys = ability.key
+//            let spell = ability.value
+//
+//            var found = true
+//            for expected_key in expected_keys.keys {
+//                if !(keys[expected_key] ?? false) {
+//                    found = false
+//                    break
+//                }
+//            }
+//
+//            if found {
+////                print("ability - FOUND")
+//                let dict: [EffectAttr: Any] = [
+//                    .FACING: self.moving_dir,
+//                    .TARGET: self
+//                ]
+//                spell.cast(attr: dict)
+//                break
+//            }
+//        }
+        
+        let moves: [KeyCombo] = [
+            KeyCombo(keys: [kVK_ANSI_I]),
+            KeyCombo(keys: [kVK_ANSI_K]),
+            KeyCombo(keys: [kVK_ANSI_J]),
+            KeyCombo(keys: [kVK_ANSI_L])
+        ]
+        
+        if !self.bool_attr["moving"]! {
+            let spell = self.abilities[moves[Int.random(in: 0...3)]]!
+            let dict: [EffectAttr: Any] = [
+                .FACING: self.moving_dir,
+                .TARGET: self
+            ]
+            spell.cast(attr: dict)
+//            move(dir: Int.random(in: 0...3))
         }
         
-        updateMovement()
     }
     
     

@@ -22,6 +22,14 @@
 		AA65195A24E37849009DBDB4 /* SpritePlaygroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65195924E37849009DBDB4 /* SpritePlaygroundTests.swift */; };
 		AA65196524E37849009DBDB4 /* SpritePlaygroundUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65196424E37849009DBDB4 /* SpritePlaygroundUITests.swift */; };
 		AACFF05324F32DCF0016A4D5 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF05224F32DCF0016A4D5 /* Entity.swift */; };
+		AACFF05724F5EF160016A4D5 /* Sketchboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF05624F5EF160016A4D5 /* Sketchboard.swift */; };
+		AACFF05B24F96AF50016A4D5 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF05A24F96AF50016A4D5 /* Enums.swift */; };
+		AACFF05D24F96B460016A4D5 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF05C24F96B460016A4D5 /* Protocols.swift */; };
+		AACFF05F24F96B940016A4D5 /* DamageEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF05E24F96B940016A4D5 /* DamageEffect.swift */; };
+		AACFF06124F96BB50016A4D5 /* MoveEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF06024F96BB50016A4D5 /* MoveEffect.swift */; };
+		AACFF06524F96C690016A4D5 /* CreateProjectileEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF06424F96C690016A4D5 /* CreateProjectileEffect.swift */; };
+		AACFF06724F96C8D0016A4D5 /* SelfCastSpell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF06624F96C8D0016A4D5 /* SelfCastSpell.swift */; };
+		AACFF06B24F993380016A4D5 /* EtherealEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF06A24F993380016A4D5 /* EtherealEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +72,14 @@
 		AA65196424E37849009DBDB4 /* SpritePlaygroundUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpritePlaygroundUITests.swift; sourceTree = "<group>"; };
 		AA65196624E37849009DBDB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AACFF05224F32DCF0016A4D5 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		AACFF05624F5EF160016A4D5 /* Sketchboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sketchboard.swift; sourceTree = "<group>"; };
+		AACFF05A24F96AF50016A4D5 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		AACFF05C24F96B460016A4D5 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		AACFF05E24F96B940016A4D5 /* DamageEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEffect.swift; sourceTree = "<group>"; };
+		AACFF06024F96BB50016A4D5 /* MoveEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEffect.swift; sourceTree = "<group>"; };
+		AACFF06424F96C690016A4D5 /* CreateProjectileEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectileEffect.swift; sourceTree = "<group>"; };
+		AACFF06624F96C8D0016A4D5 /* SelfCastSpell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfCastSpell.swift; sourceTree = "<group>"; };
+		AACFF06A24F993380016A4D5 /* EtherealEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherealEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,20 +139,16 @@
 		AA65193F24E37848009DBDB4 /* SpritePlayground */ = {
 			isa = PBXGroup;
 			children = (
+				AACFF05524F5EEEB0016A4D5 /* Abilities */,
+				AACFF05424F5EE790016A4D5 /* Entities */,
 				AA51E19124EF6B2B0084A4A3 /* Scenes */,
 				AA18789824E46CAD0092FA19 /* World.swift */,
-				AA18789A24E4705F0092FA19 /* Tile.swift */,
-				AA18789C24E4BCD70092FA19 /* Player.swift */,
-				AA56ED6324E5A50200CEC3EC /* Bullet.swift */,
-				AA56ED6524E60F1900CEC3EC /* Enemy.swift */,
-				AA56ED6724E62ED800CEC3EC /* Unit.swift */,
-				AA65194024E37848009DBDB4 /* AppDelegate.swift */,
-				AA65194824E37848009DBDB4 /* ViewController.swift */,
 				AA65194A24E37849009DBDB4 /* Assets.xcassets */,
 				AA65194C24E37849009DBDB4 /* Main.storyboard */,
+				AA65194824E37848009DBDB4 /* ViewController.swift */,
+				AA65194024E37848009DBDB4 /* AppDelegate.swift */,
 				AA65194F24E37849009DBDB4 /* Info.plist */,
 				AA65195024E37849009DBDB4 /* SpritePlayground.entitlements */,
-				AACFF05224F32DCF0016A4D5 /* Entity.swift */,
 			);
 			path = SpritePlayground;
 			sourceTree = "<group>";
@@ -157,6 +169,50 @@
 				AA65196624E37849009DBDB4 /* Info.plist */,
 			);
 			path = SpritePlaygroundUITests;
+			sourceTree = "<group>";
+		};
+		AACFF05424F5EE790016A4D5 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				AACFF05224F32DCF0016A4D5 /* Entity.swift */,
+				AA18789A24E4705F0092FA19 /* Tile.swift */,
+				AA18789C24E4BCD70092FA19 /* Player.swift */,
+				AA56ED6324E5A50200CEC3EC /* Bullet.swift */,
+				AA56ED6524E60F1900CEC3EC /* Enemy.swift */,
+				AA56ED6724E62ED800CEC3EC /* Unit.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		AACFF05524F5EEEB0016A4D5 /* Abilities */ = {
+			isa = PBXGroup;
+			children = (
+				AACFF05924F96ADA0016A4D5 /* Spells */,
+				AACFF05824F96ACC0016A4D5 /* Effects */,
+				AACFF05624F5EF160016A4D5 /* Sketchboard.swift */,
+				AACFF05A24F96AF50016A4D5 /* Enums.swift */,
+				AACFF05C24F96B460016A4D5 /* Protocols.swift */,
+			);
+			name = Abilities;
+			sourceTree = "<group>";
+		};
+		AACFF05824F96ACC0016A4D5 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				AACFF05E24F96B940016A4D5 /* DamageEffect.swift */,
+				AACFF06024F96BB50016A4D5 /* MoveEffect.swift */,
+				AACFF06424F96C690016A4D5 /* CreateProjectileEffect.swift */,
+				AACFF06A24F993380016A4D5 /* EtherealEffect.swift */,
+			);
+			name = Effects;
+			sourceTree = "<group>";
+		};
+		AACFF05924F96ADA0016A4D5 /* Spells */ = {
+			isa = PBXGroup;
+			children = (
+				AACFF06624F96C8D0016A4D5 /* SelfCastSpell.swift */,
+			);
+			name = Spells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,13 +347,21 @@
 			files = (
 				AA65194924E37848009DBDB4 /* ViewController.swift in Sources */,
 				AA65194724E37848009DBDB4 /* GameScene.swift in Sources */,
+				AACFF05F24F96B940016A4D5 /* DamageEffect.swift in Sources */,
+				AACFF06724F96C8D0016A4D5 /* SelfCastSpell.swift in Sources */,
 				AA18789B24E4705F0092FA19 /* Tile.swift in Sources */,
 				AA56ED6824E62ED800CEC3EC /* Unit.swift in Sources */,
 				AA56ED6424E5A50200CEC3EC /* Bullet.swift in Sources */,
+				AACFF05724F5EF160016A4D5 /* Sketchboard.swift in Sources */,
 				AA51E18E24EDE6630084A4A3 /* IssuePhysics.swift in Sources */,
 				AA56ED6624E60F1900CEC3EC /* Enemy.swift in Sources */,
 				AACFF05324F32DCF0016A4D5 /* Entity.swift in Sources */,
+				AACFF05D24F96B460016A4D5 /* Protocols.swift in Sources */,
 				AA18789924E46CAD0092FA19 /* World.swift in Sources */,
+				AACFF06B24F993380016A4D5 /* EtherealEffect.swift in Sources */,
+				AACFF06124F96BB50016A4D5 /* MoveEffect.swift in Sources */,
+				AACFF06524F96C690016A4D5 /* CreateProjectileEffect.swift in Sources */,
+				AACFF05B24F96AF50016A4D5 /* Enums.swift in Sources */,
 				AA18789D24E4BCD70092FA19 /* Player.swift in Sources */,
 				AA65194124E37848009DBDB4 /* AppDelegate.swift in Sources */,
 			);

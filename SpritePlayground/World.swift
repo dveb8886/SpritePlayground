@@ -41,7 +41,7 @@ class World : SKNode {
 //        tile.initPhysics()
         tile_templates["a"] = tile
         
-        let size = World.squareSize
+//        let size = World.squareSize
         
         self.coords = Array(repeating: Array(repeating: Tile(), count: map.count), count: map[0].count)
         for y in 0...map.count-1 {
@@ -51,13 +51,35 @@ class World : SKNode {
 //                if tile_tmp.imageName == "Blocker" {
 //                    tile_tmp.initPhysics()
 //                }
-                tile_tmp.position = CGPoint(x: x*size, y: y*size)
+//                tile_tmp.position = CGPoint(x: x*size, y: y*size)
+                tile_tmp.teleport(x: x, y: y)
                 self.coords[x][y] = tile_tmp
                 self.addChild(self.coords[x][y])
                 
             }
         }
     }
+    
+    static func convertFromTile(x: Int, y: Int) -> CGPoint {
+        return CGPoint(x: CGFloat(x*World.squareSize), y: CGFloat(y*World.squareSize))
+    }
+    
+    static func convertToTile(x: CGFloat, y: CGFloat) -> CGPoint {
+        return CGPoint(x: x/CGFloat(World.squareSize), y: y/CGFloat(World.squareSize))
+    }
+    
+//        func teleport(x: Int, y: Int){
+//            cur_tile_pos.x = CGFloat(x)
+//            cur_tile_pos.y = CGFloat(y)
+//
+//            tgt_coord_pos.x = cur_tile_pos.x*CGFloat(World.squareSize)
+//            tgt_coord_pos.y = cur_tile_pos.y*CGFloat(World.squareSize)
+//
+//    //        self.dest_marker?.position = tgt_coord_pos
+//
+//            self.position.x = tgt_coord_pos.x
+//            self.position.y = tgt_coord_pos.y
+//        }
     
     func update(keys: [Int: Bool]){
         for row in self.coords {

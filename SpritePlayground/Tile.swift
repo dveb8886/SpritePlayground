@@ -37,26 +37,13 @@ class Tile : Entity {
 //        self.physicsBody!.affectedByGravity = false
         self.physicsBody!.isDynamic = false
         self.physicsBody!.categoryBitMask = GameScene.ColliderType.TERRAIN.rawValue
-        self.physicsBody!.contactTestBitMask = GameScene.ColliderType.UNIT.rawValue
+//        self.physicsBody!.contactTestBitMask = GameScene.ColliderType.UNIT.rawValue
         self.physicsBody!.collisionBitMask =
             GameScene.ColliderType.UNIT.rawValue
     }
     
     func update(keys: [Int: Bool]){
-//        if self.lastPosition.x != self.position.x || self.lastPosition.y != self.position.y {
-//            self.lastPosition.x = self.position.x
-//            self.lastPosition.y = self.position.y
-//            changeTimer = 1
-//        }
-//
-//        if self.imageName == "Blocker" {
-//            if changeTimer > 0 {
-//                self.color = SKColor.blue
-//                changeTimer -= 1
-//            } else {
-//                self.color = SKColor.white
-//            }
-//        }
+        
     }
     
     func clone() -> Tile {
