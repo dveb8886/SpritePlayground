@@ -17,13 +17,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player = Player()
     var enemy = Enemy()
     var world = World()
-    var keys = [Int: Bool]()
+    var keys: Set = Set<Int>()
     var bullets = [Bullet]()
     
     enum ColliderType: UInt32 {
         case UNIT = 1
         case TERRAIN = 2
         case PROJECTILE = 4
+        case PROXIMITY = 8
     }
     
     override func didMove(to view: SKView) {
@@ -84,20 +85,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func keyDown(with event: NSEvent) {
-        keys[Int(event.keyCode)] = true
+        keys.insert(Int(event.keyCode))
     }
     
     override func keyUp(with event: NSEvent) {
-        keys[Int(event.keyCode)] = false
+        keys.remove(Int(event.keyCode))
     }
     
     
     override func update(_ currentTime: TimeInterval) {
-        player.update(keys: keys, currentTime: currentTime)
-        world.update(keys: keys)
-        enemy.update(keys: keys, currentTime: currentTime)
-        for bullet in self.bullets {
-            bullet.update(keys: keys)
+        for child in self.children {
+            (child as! Updatable).update(keys: keys, currentTime: currentTime)
         }
     }
     
@@ -113,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var target = nodeB
         
         // tile alwals target, bullet and enemy always source
-        if nodeA?.name == "tile" || nodeB?.name == "bullet" || nodeB?.name == "enemy" {   // tile is always the target, bullet always source
+        if nodeA?.name == "tile" || nodeB?.name == "bullet" || nodeB?.name == "enemy" || nodeB?.name == "proximity" {   // tile is always the target, bullet always source
             target = nodeA
             source = nodeB
         }

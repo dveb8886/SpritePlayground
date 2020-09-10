@@ -10,6 +10,9 @@
 		AA18789924E46CAD0092FA19 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18789824E46CAD0092FA19 /* World.swift */; };
 		AA18789B24E4705F0092FA19 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18789A24E4705F0092FA19 /* Tile.swift */; };
 		AA18789D24E4BCD70092FA19 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18789C24E4BCD70092FA19 /* Player.swift */; };
+		AA32C5622502C7D800C06623 /* Rock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32C5612502C7D800C06623 /* Rock.swift */; };
+		AA32C567250693B300C06623 /* RotateEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32C566250693B300C06623 /* RotateEffect.swift */; };
+		AA32C56925069C0C00C06623 /* EarthLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32C56825069C0C00C06623 /* EarthLauncher.swift */; };
 		AA51E18E24EDE6630084A4A3 /* IssuePhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA51E18D24EDE6630084A4A3 /* IssuePhysics.swift */; };
 		AA56ED6424E5A50200CEC3EC /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA56ED6324E5A50200CEC3EC /* Bullet.swift */; };
 		AA56ED6624E60F1900CEC3EC /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA56ED6524E60F1900CEC3EC /* Enemy.swift */; };
@@ -21,6 +24,8 @@
 		AA65194E24E37849009DBDB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA65194C24E37849009DBDB4 /* Main.storyboard */; };
 		AA65195A24E37849009DBDB4 /* SpritePlaygroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65195924E37849009DBDB4 /* SpritePlaygroundTests.swift */; };
 		AA65196524E37849009DBDB4 /* SpritePlaygroundUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65196424E37849009DBDB4 /* SpritePlaygroundUITests.swift */; };
+		AAB436412506DCBB00246F5A /* Ember.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB436402506DCBB00246F5A /* Ember.swift */; };
+		AAB436432507995100246F5A /* FireLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB436422507995100246F5A /* FireLauncher.swift */; };
 		AACFF05324F32DCF0016A4D5 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF05224F32DCF0016A4D5 /* Entity.swift */; };
 		AACFF05724F5EF160016A4D5 /* Sketchboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF05624F5EF160016A4D5 /* Sketchboard.swift */; };
 		AACFF05B24F96AF50016A4D5 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF05A24F96AF50016A4D5 /* Enums.swift */; };
@@ -30,6 +35,15 @@
 		AACFF06524F96C690016A4D5 /* CreateProjectileEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF06424F96C690016A4D5 /* CreateProjectileEffect.swift */; };
 		AACFF06724F96C8D0016A4D5 /* SelfCastSpell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF06624F96C8D0016A4D5 /* SelfCastSpell.swift */; };
 		AACFF06B24F993380016A4D5 /* EtherealEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF06A24F993380016A4D5 /* EtherealEffect.swift */; };
+		AACFF06D24FADECD0016A4D5 /* SelfChannelSpell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF06C24FADECD0016A4D5 /* SelfChannelSpell.swift */; };
+		AACFF06F24FB230E0016A4D5 /* SplitEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF06E24FB230E0016A4D5 /* SplitEffect.swift */; };
+		AACFF07124FB274C0016A4D5 /* DirectionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF07024FB274C0016A4D5 /* DirectionEffect.swift */; };
+		AACFF07324FB58170016A4D5 /* MultipleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF07224FB58170016A4D5 /* MultipleEffect.swift */; };
+		AACFF07524FC28680016A4D5 /* TimerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF07424FC28680016A4D5 /* TimerEffect.swift */; };
+		AACFF07724FC29B90016A4D5 /* RepeatingEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF07624FC29B80016A4D5 /* RepeatingEffect.swift */; };
+		AACFF07924FD76A10016A4D5 /* RandomEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF07824FD76A10016A4D5 /* RandomEffect.swift */; };
+		AACFF07B24FD78520016A4D5 /* OrderEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF07A24FD78520016A4D5 /* OrderEffect.swift */; };
+		AACFF07D24FDA8E20016A4D5 /* ProximityEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACFF07C24FDA8E20016A4D5 /* ProximityEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +67,9 @@
 		AA18789824E46CAD0092FA19 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = World.swift; path = SpritePlayground/World.swift; sourceTree = SOURCE_ROOT; };
 		AA18789A24E4705F0092FA19 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		AA18789C24E4BCD70092FA19 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		AA32C5612502C7D800C06623 /* Rock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rock.swift; sourceTree = "<group>"; };
+		AA32C566250693B300C06623 /* RotateEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateEffect.swift; sourceTree = "<group>"; };
+		AA32C56825069C0C00C06623 /* EarthLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthLauncher.swift; sourceTree = "<group>"; };
 		AA51E18D24EDE6630084A4A3 /* IssuePhysics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuePhysics.swift; sourceTree = "<group>"; };
 		AA56ED6324E5A50200CEC3EC /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		AA56ED6524E60F1900CEC3EC /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
@@ -71,6 +88,8 @@
 		AA65196024E37849009DBDB4 /* SpritePlaygroundUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpritePlaygroundUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA65196424E37849009DBDB4 /* SpritePlaygroundUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpritePlaygroundUITests.swift; sourceTree = "<group>"; };
 		AA65196624E37849009DBDB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAB436402506DCBB00246F5A /* Ember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ember.swift; sourceTree = "<group>"; };
+		AAB436422507995100246F5A /* FireLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireLauncher.swift; sourceTree = "<group>"; };
 		AACFF05224F32DCF0016A4D5 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		AACFF05624F5EF160016A4D5 /* Sketchboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sketchboard.swift; sourceTree = "<group>"; };
 		AACFF05A24F96AF50016A4D5 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -80,6 +99,15 @@
 		AACFF06424F96C690016A4D5 /* CreateProjectileEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectileEffect.swift; sourceTree = "<group>"; };
 		AACFF06624F96C8D0016A4D5 /* SelfCastSpell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfCastSpell.swift; sourceTree = "<group>"; };
 		AACFF06A24F993380016A4D5 /* EtherealEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherealEffect.swift; sourceTree = "<group>"; };
+		AACFF06C24FADECD0016A4D5 /* SelfChannelSpell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfChannelSpell.swift; sourceTree = "<group>"; };
+		AACFF06E24FB230E0016A4D5 /* SplitEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitEffect.swift; sourceTree = "<group>"; };
+		AACFF07024FB274C0016A4D5 /* DirectionEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionEffect.swift; sourceTree = "<group>"; };
+		AACFF07224FB58170016A4D5 /* MultipleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleEffect.swift; sourceTree = "<group>"; };
+		AACFF07424FC28680016A4D5 /* TimerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEffect.swift; sourceTree = "<group>"; };
+		AACFF07624FC29B80016A4D5 /* RepeatingEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingEffect.swift; sourceTree = "<group>"; };
+		AACFF07824FD76A10016A4D5 /* RandomEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomEffect.swift; sourceTree = "<group>"; };
+		AACFF07A24FD78520016A4D5 /* OrderEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEffect.swift; sourceTree = "<group>"; };
+		AACFF07C24FDA8E20016A4D5 /* ProximityEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximityEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +135,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA32C5632502E53800C06623 /* Projectiles */ = {
+			isa = PBXGroup;
+			children = (
+				AA32C5612502C7D800C06623 /* Rock.swift */,
+				AA56ED6324E5A50200CEC3EC /* Bullet.swift */,
+				AAB436402506DCBB00246F5A /* Ember.swift */,
+			);
+			name = Projectiles;
+			sourceTree = "<group>";
+		};
+		AA32C5642502E54800C06623 /* Units */ = {
+			isa = PBXGroup;
+			children = (
+				AA56ED6724E62ED800CEC3EC /* Unit.swift */,
+				AA56ED6524E60F1900CEC3EC /* Enemy.swift */,
+				AA18789C24E4BCD70092FA19 /* Player.swift */,
+			);
+			name = Units;
+			sourceTree = "<group>";
+		};
+		AA32C5652502E56000C06623 /* Terrain */ = {
+			isa = PBXGroup;
+			children = (
+				AA18789A24E4705F0092FA19 /* Tile.swift */,
+			);
+			name = Terrain;
+			sourceTree = "<group>";
+		};
 		AA51E19124EF6B2B0084A4A3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,11 +231,9 @@
 			isa = PBXGroup;
 			children = (
 				AACFF05224F32DCF0016A4D5 /* Entity.swift */,
-				AA18789A24E4705F0092FA19 /* Tile.swift */,
-				AA18789C24E4BCD70092FA19 /* Player.swift */,
-				AA56ED6324E5A50200CEC3EC /* Bullet.swift */,
-				AA56ED6524E60F1900CEC3EC /* Enemy.swift */,
-				AA56ED6724E62ED800CEC3EC /* Unit.swift */,
+				AA32C5652502E56000C06623 /* Terrain */,
+				AA32C5642502E54800C06623 /* Units */,
+				AA32C5632502E53800C06623 /* Projectiles */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -203,6 +257,17 @@
 				AACFF06024F96BB50016A4D5 /* MoveEffect.swift */,
 				AACFF06424F96C690016A4D5 /* CreateProjectileEffect.swift */,
 				AACFF06A24F993380016A4D5 /* EtherealEffect.swift */,
+				AACFF06E24FB230E0016A4D5 /* SplitEffect.swift */,
+				AACFF07024FB274C0016A4D5 /* DirectionEffect.swift */,
+				AACFF07224FB58170016A4D5 /* MultipleEffect.swift */,
+				AACFF07424FC28680016A4D5 /* TimerEffect.swift */,
+				AACFF07624FC29B80016A4D5 /* RepeatingEffect.swift */,
+				AACFF07824FD76A10016A4D5 /* RandomEffect.swift */,
+				AACFF07A24FD78520016A4D5 /* OrderEffect.swift */,
+				AACFF07C24FDA8E20016A4D5 /* ProximityEffect.swift */,
+				AA32C566250693B300C06623 /* RotateEffect.swift */,
+				AA32C56825069C0C00C06623 /* EarthLauncher.swift */,
+				AAB436422507995100246F5A /* FireLauncher.swift */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -211,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				AACFF06624F96C8D0016A4D5 /* SelfCastSpell.swift */,
+				AACFF06C24FADECD0016A4D5 /* SelfChannelSpell.swift */,
 			);
 			name = Spells;
 			sourceTree = "<group>";
@@ -345,25 +411,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AACFF06D24FADECD0016A4D5 /* SelfChannelSpell.swift in Sources */,
 				AA65194924E37848009DBDB4 /* ViewController.swift in Sources */,
+				AA32C56925069C0C00C06623 /* EarthLauncher.swift in Sources */,
 				AA65194724E37848009DBDB4 /* GameScene.swift in Sources */,
+				AACFF07924FD76A10016A4D5 /* RandomEffect.swift in Sources */,
+				AACFF07724FC29B90016A4D5 /* RepeatingEffect.swift in Sources */,
 				AACFF05F24F96B940016A4D5 /* DamageEffect.swift in Sources */,
 				AACFF06724F96C8D0016A4D5 /* SelfCastSpell.swift in Sources */,
+				AA32C567250693B300C06623 /* RotateEffect.swift in Sources */,
 				AA18789B24E4705F0092FA19 /* Tile.swift in Sources */,
 				AA56ED6824E62ED800CEC3EC /* Unit.swift in Sources */,
 				AA56ED6424E5A50200CEC3EC /* Bullet.swift in Sources */,
 				AACFF05724F5EF160016A4D5 /* Sketchboard.swift in Sources */,
 				AA51E18E24EDE6630084A4A3 /* IssuePhysics.swift in Sources */,
+				AAB436432507995100246F5A /* FireLauncher.swift in Sources */,
 				AA56ED6624E60F1900CEC3EC /* Enemy.swift in Sources */,
 				AACFF05324F32DCF0016A4D5 /* Entity.swift in Sources */,
+				AACFF07D24FDA8E20016A4D5 /* ProximityEffect.swift in Sources */,
+				AAB436412506DCBB00246F5A /* Ember.swift in Sources */,
+				AA32C5622502C7D800C06623 /* Rock.swift in Sources */,
 				AACFF05D24F96B460016A4D5 /* Protocols.swift in Sources */,
 				AA18789924E46CAD0092FA19 /* World.swift in Sources */,
 				AACFF06B24F993380016A4D5 /* EtherealEffect.swift in Sources */,
+				AACFF06F24FB230E0016A4D5 /* SplitEffect.swift in Sources */,
 				AACFF06124F96BB50016A4D5 /* MoveEffect.swift in Sources */,
+				AACFF07324FB58170016A4D5 /* MultipleEffect.swift in Sources */,
+				AACFF07524FC28680016A4D5 /* TimerEffect.swift in Sources */,
 				AACFF06524F96C690016A4D5 /* CreateProjectileEffect.swift in Sources */,
 				AACFF05B24F96AF50016A4D5 /* Enums.swift in Sources */,
+				AACFF07B24FD78520016A4D5 /* OrderEffect.swift in Sources */,
 				AA18789D24E4BCD70092FA19 /* Player.swift in Sources */,
 				AA65194124E37848009DBDB4 /* AppDelegate.swift in Sources */,
+				AACFF07124FB274C0016A4D5 /* DirectionEffect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

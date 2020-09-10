@@ -10,15 +10,21 @@ import Foundation
 import SpriteKit
 import Carbon.HIToolbox.Events  // kVK
 
-class Entity : SKSpriteNode {
+class Entity : SKSpriteNode, Updatable {
+    
+    var abilities: [KeyCombo: Spell]
     
     var bool_attr: [String: Bool] = [String: Bool]()
-    var effects: [String: [Effect]] = ["collider": [Effect]()]
+    var effects: [String: [Effect]] = ["collider": [Effect](), "general": [Effect]()]
+    
+    var moving_dir: Facing = .NORTH
+    var facing_dir: Facing = .NORTH
     
     var cur_tile_pos = CGPoint(x: 0, y: 0)
     var tgt_coord_pos = CGPoint(x: 0, y: 0)
     
     override init(texture: SKTexture?, color: SKColor, size: CGSize){
+        self.abilities = [KeyCombo: Spell]()
         super.init(texture: texture, color: color, size: size)
         self.bool_attr["moving"] = false
         self.bool_attr["ethereal"] = false
@@ -45,6 +51,10 @@ class Entity : SKSpriteNode {
     
     func reset_tile_marker(){
         self.cur_tile_pos = World.convertToTile(x: self.position.x, y: self.position.y)
+    }
+    
+    func update(keys: Set<Int>, currentTime: TimeInterval) {
+        
     }
     
     func didBegin(contact: SKPhysicsContact, target: Entity){

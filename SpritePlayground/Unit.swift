@@ -30,7 +30,7 @@ struct KeyCombo: Hashable {
 class Unit  : Entity, Status {
     
     var statuses: [Effect]
-    var abilities: [KeyCombo: Spell]
+    
     
     let DIR_UP = 0
     let DIR_DOWN = 1
@@ -40,8 +40,7 @@ class Unit  : Entity, Status {
     
     var moving = false
     var shoot_delay = 0.0
-    var moving_dir: Facing = .UP
-    var facing_dir: Facing = .UP
+    
     
     var life_max = 5.0
     var life_amt = 5.0
@@ -52,7 +51,7 @@ class Unit  : Entity, Status {
     init(imageNamed: String, name: String, marker: Bool = false){
         let texture = SKTexture(imageNamed: imageNamed)
         self.statuses = [Effect]()
-        self.abilities = [KeyCombo: Spell]()
+        
         super.init(texture: texture, color: SKColor.white, size: texture.size())
         self.colorBlendFactor = 1.0
         
@@ -109,7 +108,7 @@ class Unit  : Entity, Status {
 //        GameScene.instance?.bullets.remove(at: (GameScene.instance?.bullets.firstIndex(of: self))!)
     }
     
-    func update(keys: [Int: Bool], currentTime: TimeInterval){
+    override func update(keys: Set<Int>, currentTime: TimeInterval){
 //        updateMovement()
     }
     

@@ -15,10 +15,10 @@ class Enemy  : Unit {
     init(){
         super.init(imageNamed: "Circle", name: "enemy")
         self.speed = 1.0
-        self.abilities[KeyCombo(keys: [kVK_ANSI_I])] = SelfCast(cooldown: 0.1, startEffect: MoveEffect(dir: .UP, speed: 0.5))
-        self.abilities[KeyCombo(keys: [kVK_ANSI_K])] = SelfCast(cooldown: 0.1, startEffect: MoveEffect(dir: .DOWN, speed: 0.5))
-        self.abilities[KeyCombo(keys: [kVK_ANSI_J])] = SelfCast(cooldown: 0.1, startEffect: MoveEffect(dir: .LEFT, speed: 0.5))
-        self.abilities[KeyCombo(keys: [kVK_ANSI_L])] = SelfCast(cooldown: 0.1, startEffect: MoveEffect(dir: .RIGHT, speed: 0.5))
+        self.abilities[KeyCombo(keys: [kVK_ANSI_I])] = SelfCast(cooldown: 0.1, startEffect: MoveEffect(dir: .NORTH, speed: 0.5))
+        self.abilities[KeyCombo(keys: [kVK_ANSI_K])] = SelfCast(cooldown: 0.1, startEffect: MoveEffect(dir: .SOUTH, speed: 0.5))
+        self.abilities[KeyCombo(keys: [kVK_ANSI_J])] = SelfCast(cooldown: 0.1, startEffect: MoveEffect(dir: .WEST, speed: 0.5))
+        self.abilities[KeyCombo(keys: [kVK_ANSI_L])] = SelfCast(cooldown: 0.1, startEffect: MoveEffect(dir: .EAST, speed: 0.5))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -26,7 +26,7 @@ class Enemy  : Unit {
     }
     
     
-    override func update(keys: [Int: Bool], currentTime: TimeInterval){
+    override func update(keys: Set<Int>, currentTime: TimeInterval){
 //        for ability in self.abilities {
 ////            print("ability - test")
 //            let expected_keys = ability.key

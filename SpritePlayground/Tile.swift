@@ -42,7 +42,7 @@ class Tile : Entity {
             GameScene.ColliderType.UNIT.rawValue
     }
     
-    func update(keys: [Int: Bool]){
+    func update(keys: Set<Int>){
         
     }
     

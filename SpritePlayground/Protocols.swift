@@ -20,7 +20,9 @@ extension Array {
 }
 
 protocol Effect : class {
-    func start(attr: [EffectAttr: Any])
+    var channelingSpell: Spell? { get set }
+    func start(attr: [EffectAttr: Any]) -> Bool
+    func clone() -> Effect
 }
 
 protocol UpdatingEffect {
@@ -32,16 +34,21 @@ protocol CollidingEffect {
 }
 
 protocol Spell {
+    var channeling: Bool { get set }
     func cast(attr: [EffectAttr: Any])
+}
+
+protocol Updatable {
+    func update(keys: Set<Int>, currentTime: TimeInterval)
 }
 
 protocol Projectile {
     var moveSpeed: CGFloat { get set }
     var impactEffect: Effect { get set }
-    var spawnerEffect: Effect? { get set }
     
     func clone() -> Projectile
     func setPosition(x: CGFloat, y: CGFloat)
     func setFacing(dir: Facing)
     func getSize() -> CGSize
+    func getMover() -> Effect
 }

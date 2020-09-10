@@ -11,7 +11,8 @@ import SpriteKit
 import Carbon.HIToolbox.Events  // kVK
 
 
-class World : SKNode {
+class World : SKNode, Updatable {
+    
     
     static var instance: World?
     
@@ -65,7 +66,7 @@ class World : SKNode {
     }
     
     static func convertToTile(x: CGFloat, y: CGFloat) -> CGPoint {
-        return CGPoint(x: x/CGFloat(World.squareSize), y: y/CGFloat(World.squareSize))
+        return CGPoint(x: round(x/CGFloat(World.squareSize)), y: round(y/CGFloat(World.squareSize)))
     }
     
 //        func teleport(x: Int, y: Int){
@@ -81,19 +82,23 @@ class World : SKNode {
 //            self.position.y = tgt_coord_pos.y
 //        }
     
-    func update(keys: [Int: Bool]){
-        for row in self.coords {
-            for tile in row {
-                tile.update(keys: keys)
-            }
+    func update(keys: Set<Int>, currentTime: TimeInterval){
+        for child in self.children {
+            (child as! Updatable).update(keys: keys, currentTime: currentTime)
         }
-        if keys[kVK_LeftArrow] ?? false {
+        
+//        for row in self.coords {
+//            for tile in row {
+//                tile.update(keys: keys)
+//            }
+//        }
+        if keys.contains(kVK_LeftArrow) {
             self.position.x -= 10
-        } else if keys[kVK_RightArrow] ?? false {
+        } else if keys.contains(kVK_RightArrow) {
             self.position.x += 10
-        } else if keys[kVK_UpArrow] ?? false {
+        } else if keys.contains(kVK_UpArrow) {
             self.position.y += 10
-        } else if keys[kVK_DownArrow] ?? false {
+        } else if keys.contains(kVK_DownArrow) {
             self.position.y -= 10
         }
     }

@@ -18,7 +18,7 @@ class Bullet : Entity, Projectile {
     var spawnerEffect: Effect?
     
     var moving = true
-    var moving_dir: Facing = .UP
+    
     
     init(impactEffect: Effect){
         let texture = SKTexture(imageNamed: "Bullet")
@@ -48,13 +48,13 @@ class Bullet : Entity, Projectile {
     
     func move(dir: Facing, rotate: Bool = true){
         moving_dir = dir
-        if dir == .UP {
+        if dir == .NORTH {
             if rotate {self.zRotation = 0}
-        } else if dir == .DOWN {
+        } else if dir == .SOUTH {
             if rotate {self.zRotation = .pi}
-        } else if dir == .LEFT {
+        } else if dir == .WEST {
             if rotate {self.zRotation = .pi / 2}
-        } else if dir == .RIGHT {
+        } else if dir == .EAST {
             if rotate {self.zRotation = 3 * .pi / 2}
         }
         
@@ -65,15 +65,15 @@ class Bullet : Entity, Projectile {
         self.position.y = y
     }
     
-    func update(keys: [Int: Bool]){
+    override func update(keys: Set<Int>, currentTime: TimeInterval){
         if moving {
-            if moving_dir == .UP {
+            if moving_dir == .NORTH {
                 self.position.y = self.position.y + speed
-            } else if moving_dir == .DOWN {
+            } else if moving_dir == .SOUTH {
                 self.position.y = self.position.y - speed
-            } else if moving_dir == .LEFT {
+            } else if moving_dir == .WEST {
                 self.position.x = self.position.x - speed
-            } else if moving_dir == .RIGHT {
+            } else if moving_dir == .EAST {
                 self.position.x = self.position.x + speed
             }
         }
@@ -81,6 +81,9 @@ class Bullet : Entity, Projectile {
     
     func clone() -> Projectile {
         let bullet = Bullet(impactEffect: self.impactEffect)
+        bullet.moveSpeed = self.moveSpeed
+        bullet.impactEffect = self.impactEffect.clone()
+        bullet.spawnerEffect = self.spawnerEffect?.clone()
         return bullet
     }
     
@@ -96,19 +99,23 @@ class Bullet : Entity, Projectile {
         return self.size
     }
     
+    func getMover() -> Effect {
+        return MoveEffect(dir: self.facing_dir, speed: 3.0)
+    }
+    
     override func didBegin(contact: SKPhysicsContact, target: Entity){
-        if !target.bool_attr["ethereal"]! {
+//        if !target.bool_attr["ethereal"]! {
             self.removeFromParent()
             GameScene.instance?.bullets.remove(at: (GameScene.instance?.bullets.firstIndex(of: self))!)
             print("bullet contact")
 //            if target is Unit {
-                print("target contact")
-                let dict: [EffectAttr: Any] = [
-                    .TARGET: target,
-                    .FACING: self.moving_dir
-                ]
-                self.impactEffect.start(attr: dict)
+            print("target contact")
+            let dict: [EffectAttr: Any] = [
+                .TARGET: target,
+                .FACING: self.moving_dir
+            ]
+            var _ = self.impactEffect.start(attr: dict)
 //            }
-        }
+//        }
     }
 }
